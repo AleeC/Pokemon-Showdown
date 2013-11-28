@@ -1683,6 +1683,232 @@ var commands = exports.commands = {
 	},
 
 	/*********************************************************
+	 * Comandos del server
+	 *********************************************************/
+
+	foro: function(target, room, user, connection) {
+                if (!this.canBroadcast()) return;
+                this.sendReplyBox('<a href="http://www.pokemon-hispano.comxa.com/" target="_BLANK">Visita nuestro foro!</a>');
+        },
+
+        radio: function(target, room, user, connection) {
+                if (!this.canBroadcast()) return;
+                this.sendReplyBox('<div class="infobox"><center><a href="http://plug.dj/hispanops/ "><img src="http://i.imgur.com/2olrf6c.gif" height="100" width="100"></a><br><font size=3><b><font color="blue">Radio de Pokémon Hispano');
+        },
+
+        funciones: function(target, room, user, connection) {
+                if (!this.canBroadcast()) return;
+                this.sendReplyBox('<b>+Voices:</b> Los voices son personas destacadas dentro de los usuarios y seleccionados por el Staff para ser los encargados de resolver dudas, a través de los comandos !data, !learn, !effectiveness, !foro, !funciones, !reglastorneos, !staff y !bienvenido entre otros comandos. Para ser voice, el primer paso es no solicitarlo, entrar regularmente al servidor y participar activamente del chat y no tener historial de faltas a las normas. Los Voices a pruebas pueden ser otorgados por ganar algún concurso/torneo, pero estos a la primera falta contra las normas o no participar activamente del chat ayudando a los usuarios, pueden ser removidos.<br /><br /><br /><b>%Drivers:</b> Los Drivers son asistentes de los moderadores ayudan con la moderación del chat pudiendo dar advertencias a los que incurren en faltas y de no haber moderador presente silenciar a los problemáticos por un tiempo máximo de 7 minutos.<br /><br /><b>@Moderadores:</b> Los moderadores asisten a los Administradores y Lideres moderando el chat, son los máximos responsables del cumplimiento de las reglas y por ende también deben saber respetarlas. Pudiendo acceder al poder del destierro con estos fines.<br /><br /><br /><b>&Lideres:</b> Los Lideres asisten a los Administradores en la moderación de batallas y control general de el servidor.<br /><br /><b>~Administradores:</b> Los Administradores son la máxima autoridad del servidor, son los encargados del correcto funcionamiento del server y también se  encargan de el ascenso de los miembros del Staff y no pertenecientes a él.');
+        },
+
+        reglastorneos: function(target, room, user, connection) {
+                if (!this.canBroadcast()) return;
+                this.sendReplyBox('Reglas para moderadores de Torneos<br />1- Solo se podra descalificar /dq cuando se hayan terminado todas las batallas en curso del torneo.<br />2- Para reemplazar a una persona se debe tener el permiso de esa persona y no se puee reemplazar a alguien despues de la primera ronda.<br />3- Es de preferencia que siempre haya un moderador designado para moderar el torneo y este se ocupe de descalificar/reemplazar y abrir el proximo torneo.<br />4- Durante la primera ronda, es de prioridad reemplazar jugadores antes de descalificarlos.<br />5- El moderador que abra el torneo, establecera el premio del torneo.<br />Los posibles premios son: Elegir el proximo tier de torneo. De ser un Lider o Administrador quien abra el torneo tambien puede abrir una plaza para Voiced.<br /> Recomendaciones:<br />-Para evitar avances sin batalla la cantidad de participantes recomendada son: 4, 8, 16, 32 y 64.<br />-Para evitar descontrol en el torneo, no se recomienda torneos mayores de 32 participantes.<br />-Para evitar torneos express, no se recomienda torneos menor a 8 personas.');
+        },
+
+        staff: function(target, room, user, connection) {
+                if (!this.canBroadcast()) return;
+                this.sendReplyBox('<a href="http://pokemon-hispano.comxa.com/showteam.php" target="_BLANK">Staff</a>');
+        },
+
+        bienvenido: function(target, room, user, connection) {
+                if (!this.canBroadcast()) return;
+                this.sendReplyBox('Bienvenido a Pokémon Hispano. La guia de inicio puedes encontrarla ingresando <a href="http://pokemon-hispano.comxa.com/showthread.php?tid=60" target="_BLANK">aqui</a>.');
+        },
+
+        ligaph: function(target, room, user, connection) {
+                if (!this.canBroadcast()) return;
+                this.sendReplyBox('Toda la información de nuestra liga puede ser encontrada <a href="http://pokemon-hispano.comxa.com/showthread.php?tid=35" target="_BLANK">aquí</a>.');
+        },
+	
+	tierpoll: 'tiervote',
+        tiervote: function(target, room, user){
+                return this.parse('/poll Siguiente torneo? (En caso de repetirse la tier se elegirá el 2do lugar),ou,ubers,lc,pokebankou,pokebankubers,pokebanklc,cap,gen5randombattle,gen5ou,gen5ubers,gen5uu,gen5ru,gen5nu,gen5lc,challengecup,challengecup1vs1,gen5oumonotype,gen51v1,gen5stabmons,smogondoubles,pokebanksmogondoubles,gen5smogondoubles,gen5doublesvgc2013');
+        },
+
+        tourcommands: function(target, room, user) {
+                if (!this.canBroadcast()) return;
+                this.sendReplyBox('<b>Los torneos pueden ser creados por usuarios con autoridad de Voiced (+) o superiores<br \></b>' +
+                '<br />' +
+                '- /tour [tier], [tiempo] - Comienza un torneo<br \>' +
+                '- /tour [tier], [tamaño] - Comienza un torneo<br \>' +
+                '- /endtour - Finaliza el torneo en curso<br \>' +
+                '- /fj [username] - Forza a un user a entrar del torneo<br \>' +
+                '- /fl [username] - Forza a un user a salir del torneo<br \>' +
+                '- /toursize [tamaño] - Cambia el tamaño del torneo en curso<br \>' +
+                '- /replace [username1], [username2] - Reemplaza a un usuario presente en el torneo por un segundo usuario');
+        },
+        
+
+        ajudasala: function(target, room, user) {
+                if (!this.canBroadcast()) return;
+                if (room.id === 'lobby' && this.broadcasting) return this.sendReply('Este comando causa muito spam no lobby');
+                this.sendReplyBox('Room voiced (+) tem uma função similar ao dos voiced no servidor em geral<br />' +
+                        '<br />' +
+                        'Room drivers (%) podem usar:<br />' +
+                        '- /mute <em>username</em>: Muta um usuário por 7 minutos<br />' +
+                        '- /hourmute <em>username</em>: Muta um usuário por 60 minutos<br />' +
+                        '- /unmute <em>username</em>: Remove o mute<br />' +
+                        '<br />' +
+                        'Room owners (#) podem também usar:<br />' +
+                        '- /roomvoice <em>username</em>: Tornar uma pessoa room voiced<br />' +
+                        '- /deroomvoice <em>username</em>: Remover o room voiced de uma pessoa<br />' +
+                        '- /roomowner <em>username</em>: Tornar uma pessoa room owner<br />' +
+                        '- /deroomowner username: Remover o room owner de uma pessoa<br />' +
+                        '</div>');
+            },
+            
+        masters: 'mob',
+        mob: function(target, room, user) {
+                    if (!this.canBroadcast()) return;
+                    this.sendReplyBox('<center><a href="http://pokemon-hispano.comxa.com/showthread.php?tid=369"><img src="http://i.imgur.com/XNUkW1J.png" height="150" width="210"></a><br><center><font size=3><b>Torneo Masters of Battles de Pokémon Hispano')
+        },
+
+        eventos: 'listadeeventos',
+        listadeeventos: function(target, room, user) {
+                if (!this.canBroadcast()) return;
+                this.sendReplyBox('<b><font size=2><center> Esta es una lista de eventos del servidor para el día de hoy 27/11/13. Todos los eventos se encuentran en horario Mexico D.F..</center></font></b><br><br><b>••Masters of battles [Gen 5] LC••</b> Este evento esta programado a las 18:00<br><br><b>••Masters of battles Pokebank UBERS</b>•• Este evento esta programado a las 19:00<br><br><b>••Masters of battles Pokebank OU••</b> Este evento esta programado a las 20:00<br><br><center>Para mas detalles utilizar el comando /mob o contactar con Arii o con Sweetie.');
+         },
+        
+        mobou: 'mastersou',
+        mastersou: function(target, room, user) {
+                if (!this.canBroadcast()) return;
+                this.sendReplyBox('<b><font size=2><center>Masters OU</center></b></font><br><br>•27/Nov/13 - Plizrd');
+        },
+        
+        mobubers: 'mastersubers',
+        mastersubers: function(target, room, user) {
+                if (!this.canBroadcast()) return;
+                this.sendReplyBox('<b><font size=2><center>Masters Ubers</center></b></font><br><br>•27/Nov/13 - (CC) Nadrenfox');
+        },
+        
+        moblc: 'masterslc',
+        masterslc: function(target, room, user) {
+                if (!this.canBroadcast()) return;
+                this.sendReplyBox('<b><font size=2><center>Masters LC</center></b></font><br><br>•27/Nov/13 - Kvotthe');
+        },
+        
+        mobru: 'mastersru',
+        mastersru: function(target, room, user) {
+                if (!this.canBroadcast()) return;
+                this.sendReplyBox('<b><font size=2><center>Masters RU</center></b></font><br><br>No hay masters registrados');
+        },
+        
+        mobnu: 'mastersnu',
+        mastersnu: function(target, room, user) {
+                if (!this.canBroadcast()) return;
+                this.sendReplyBox('<b><font size=2><center>Masters NU</center></b></font><br><br>No hay masters registrados');
+        },
+        
+        mobmono: 'mastersmono',
+        mastersmono: function(target, room, user) {
+                if (!this.canBroadcast()) return;
+                this.sendReplyBox('<b><font size=2><center>Masters OU Monotype</center></b></font><br><br>No hay masters registrados');
+        },
+        
+        mobvgc: 'mastersvgc',
+        mastersvgc: function(target, room, user) {
+                if (!this.canBroadcast()) return;
+                this.sendReplyBox('<b><font size=2><center>Masters VGC 2013</center></b></font><br><br>No hay masters registrados');
+        },
+        
+        livestream: 'stream',
+        stream: function(target, room, user) {
+                if (!this.canBroadcast()) return;
+                this.sendReplyBox('<center><img src="http://www.clker.com/cliparts/a/d/7/4/1227973970356772938Farmeral_video-icon.svg.med.png" height="150" width="150"><br><a href="http://www.twitch.tv/pokemonhispano/"><center><font size=2><b>Livesteam de Pokémon Hispano</a>');
+        },
+
+        roomhelp: function(target, room, user) {
+                if (!this.canBroadcast()) return;
+                if (room.id === 'lobby' && this.broadcasting) return this.sendReply('Este comando es demasiado grande para ser voceado en el lobby');
+                this.sendReplyBox('Room voiced (+) tienen una función similar a los voiced del server en general<br/>' +
+                        '<br />' +
+                        'Room drivers (%) pueden usar:<br/>' +
+                        '- /mute <em>username</em>: Mutea a un usuario por 7 minutos<br/>' +
+                        '- /hourmute <em>username</em>: Mutea a un usuario por 60 minutos<br />' +
+                        '- /unmute <em>username</em>: Remueve el mute<br/>' +
+                        '<br />' +
+                        'Room owners (#) pueden también usar:<br />' +
+                        '- /roomvoice <em>username</em>: Nombrar a un room voiced<br />' +
+                        '- /deroomvoice <em>username</em>: Remover a un room voiced<br />' +
+                        '- /roomowner <em>username</em>: Nombrar a un room owner<br />' +
+                        '- /deroomowner <em>username</em>: Remover a un room owner<br />' +
+                        '</div>');
+        },
+        
+        getrandom: 'pickrandom',
+        pickrandom: function (target, room, user) {
+                if (!target) return this.sendReply('/pickrandom [opción 1], [opción 2], ... - Escoge aleatoriamente una de las opciones.');
+                if (!this.canBroadcast()) return;
+                var targets;
+                if (target.indexOf(',') === -1) {
+                        targets = target.split(' ');
+                } else {
+                        targets = target.split(',');
+                };
+                var result = Math.floor(Math.random() * targets.length);
+                return this.sendReplyBox(targets[result].trim());
+        },
+        
+        /*********************************************************
+	 * Comandos de presentación
+	 *********************************************************/
+        
+        mrpoke: 'ccmrpokee',
+        ccmrpokee: function(target, room, user) {
+                if (!this.canBroadcast()) return;
+                this.sendReplyBox('<div class="infobox"><center><img src="http://37.0.121.211:8000/avatars/mrpoke.gif"> <br><b><font size=3>Mr.Poke</font></b><br><br>Desarrollador de imágenes y apariencia de Pokémon Hispano</br>');
+        },
+
+        arii: 'ariibo',
+        ariibo: function(target, room, user) {
+                if (!this.canBroadcast()) return;
+                this.sendReplyBox('<div class="infobox"><center><img src="http://37.0.121.211:8000/avatars/cari.gif"> <br><b><font size=3>♡Arii★BO♡</font></b><br><br>Leader del server y administradora de la liga Pokémon Hispano</br>');
+        },
+
+        vero: 'verofv',
+        verofv: function(target, room, user) {
+                if (!this.canBroadcast()) return;
+                this.sendReplyBox('<div class="infobox"><center><img src="http://37.0.121.211:8000/avatars/vero.gif"> <br><b><font size=3>VeroFV✿Wiiiii!</font></b><br><br>Desarrolladora de imágenes, sprites y apariencia de Pokémon Hispano</br>');
+        },
+
+        shake: 'august',
+        august: function(target, room, user) {
+                if (!this.canBroadcast()) return;
+                this.sendReplyBox('<div class="infobox"><center><img src="http://i.imgur.com/fdRCke8.gif"> <br><b><font size=3>Shake</font></b><br><br>Administrador de Pokémon Hispano</br>');
+        },
+
+        nesu: 'ccnesu',
+        ccnesu: function(target, room, user) {
+                if (!this.canBroadcast()) return;
+                this.sendReplyBox('<div class="infobox"><center><img src="http://i.imgur.com/AXsaDI3.gif"> <br><b><font size=3>(CC)Nesu</font></b><br><br>Administrador del Livestream de Pokémon Hispano</br>');
+        },
+
+        leo: 'john',
+        john: function(target, room, user) {
+                if (!this.canBroadcast()) return;
+                this.sendReplyBox('<div class="infobox"><center><img src="http://37.0.121.211:8000/avatars/calderas.gif"> <br><b><font size=3>CH Leo Calderon</font></b><br><br>Administrador de la liga Pokémon Hispano</br>');
+        },
+
+        sweetie: 'alee',
+        alee: function(target, room, user) {
+                if (!this.canBroadcast()) return;
+                this.sendReplyBox('<div class="infobox"><center><img src="http://37.0.121.211:8000/avatars/alee2.gif"> <br><b><font size=3>Sweetie♥♥</font></b><br><br>Desarrollo y mejora de Pokémon Hispano (Y también quien hace estas cosas :3)</br>');
+        },
+
+        hatty: 'mikii',
+        mikii: function(target, room, user) {
+                if (!this.canBroadcast()) return;
+                this.sendReplyBox('<center><img src="http://i.imgur.com/zOkhx1T.gif"><br><font size=3><b>Hatty</b></font><br>Desarrollador de imagenes, apariencia y traducción al portugués de Pokémon Hispano<br>Designer e tradutor pra português do Pokémon Hispano');
+        },
+
+        neonnnn: 'neon',
+        neon: function(target, room, user) {
+                if (!this.canBroadcast()) return;
+                this.sendReplyBox('<div class="infobox"><center><img src="http://i.imgur.com/AivX6bM.png "> <br><b><font size=3>Neonnnn</font></b><br><br>Administrador de Pokémon Hispano </br>');
+        },
+        
+	/*********************************************************
 	 * Low-level
 	 *********************************************************/
 
