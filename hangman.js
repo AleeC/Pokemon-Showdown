@@ -105,7 +105,7 @@ var cmds = {
 		if(hangman[room.id].hangman === false) {
 			return this.sendReply('No hay juego de hangman en curso.');
 		}
-		this.sendReplyBox('|html|<div class = "broadcast-green"><font size = 2>' + hangman[room.id].spaces.join(" ") + '<br>Intentos restantes: ' + hangman[room.id].givenguesses + '<br>Categoría: ' + hangman[room.id].hangmantopic[0] + '</font>');
+		this.sendReplyBox('|html|<div class = "broadcast-green"><center><font size = 2>' + hangman[room.id].spaces.join(" ") + '<br>Intentos restantes: ' + hangman[room.id].givenguesses + '<br>Categoría: ' + hangman[room.id].hangmantopic[0] + '</font>');
 	},
 
 	 topic: 'category',
