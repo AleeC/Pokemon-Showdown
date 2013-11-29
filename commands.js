@@ -1772,70 +1772,11 @@ var commands = exports.commands = {
                 this.sendReplyBox('<b><font size=2><center> Esta es una lista de eventos del servidor para el día de hoy 27/11/13. Todos los eventos se encuentran en horario Mexico D.F..</center></font></b><br><br><b>••Masters of battles [Gen 5] LC••</b> Este evento esta programado a las 18:00<br><br><b>••Masters of battles Pokebank UBERS</b>•• Este evento esta programado a las 19:00<br><br><b>••Masters of battles Pokebank OU••</b> Este evento esta programado a las 20:00<br><br><center>Para mas detalles utilizar el comando /mob o contactar con Arii o con Sweetie.');
          },
         
-        mobou: 'mastersou',
-        mastersou: function(target, room, user) {
-                if (!this.canBroadcast()) return;
-                this.sendReplyBox('<b><font size=2><center>Masters OU</center></b></font><br><br>•27/Nov/13 - Plizrd');
-        },
-        
-        mobubers: 'mastersubers',
-        mastersubers: function(target, room, user) {
-                if (!this.canBroadcast()) return;
-                this.sendReplyBox('<b><font size=2><center>Masters Ubers</center></b></font><br><br>•27/Nov/13 - (CC) Nadrenfox');
-        },
-        
-        moblc: 'masterslc',
-        masterslc: function(target, room, user) {
-                if (!this.canBroadcast()) return;
-                this.sendReplyBox('<b><font size=2><center>Masters LC</center></b></font><br><br>•27/Nov/13 - Kvotthe');
-        },
-        
-        mobru: 'mastersru',
-        mastersru: function(target, room, user) {
-                if (!this.canBroadcast()) return;
-                this.sendReplyBox('<b><font size=2><center>Masters RU</center></b></font><br><br>No hay masters registrados');
-        },
-        
-        mobnu: 'mastersnu',
-        mastersnu: function(target, room, user) {
-                if (!this.canBroadcast()) return;
-                this.sendReplyBox('<b><font size=2><center>Masters NU</center></b></font><br><br>No hay masters registrados');
-        },
-        
-        mobmono: 'mastersmono',
-        mastersmono: function(target, room, user) {
-                if (!this.canBroadcast()) return;
-                this.sendReplyBox('<b><font size=2><center>Masters OU Monotype</center></b></font><br><br>No hay masters registrados');
-        },
-        
-        mobvgc: 'mastersvgc',
-        mastersvgc: function(target, room, user) {
-                if (!this.canBroadcast()) return;
-                this.sendReplyBox('<b><font size=2><center>Masters VGC 2013</center></b></font><br><br>No hay masters registrados');
-        },
-        
+       
         livestream: 'stream',
         stream: function(target, room, user) {
                 if (!this.canBroadcast()) return;
                 this.sendReplyBox('<center><img src="http://www.clker.com/cliparts/a/d/7/4/1227973970356772938Farmeral_video-icon.svg.med.png" height="150" width="150"><br><a href="http://www.twitch.tv/pokemonhispano/"><center><font size=2><b>Livesteam de Pokémon Hispano</a>');
-        },
-
-        roomhelp: function(target, room, user) {
-                if (!this.canBroadcast()) return;
-                if (room.id === 'lobby' && this.broadcasting) return this.sendReply('Este comando es demasiado grande para ser voceado en el lobby');
-                this.sendReplyBox('Room voiced (+) tienen una función similar a los voiced del server en general<br/>' +
-                        '<br />' +
-                        'Room drivers (%) pueden usar:<br/>' +
-                        '- /mute <em>username</em>: Mutea a un usuario por 7 minutos<br/>' +
-                        '- /hourmute <em>username</em>: Mutea a un usuario por 60 minutos<br />' +
-                        '- /unmute <em>username</em>: Remueve el mute<br/>' +
-                        '<br />' +
-                        'Room owners (#) pueden también usar:<br />' +
-                        '- /roomvoice <em>username</em>: Nombrar a un room voiced<br />' +
-                        '- /deroomvoice <em>username</em>: Remover a un room voiced<br />' +
-                        '- /roomowner <em>username</em>: Nombrar a un room owner<br />' +
-                        '- /deroomowner <em>username</em>: Remover a un room owner<br />' +
-                        '</div>');
         },
         
         getrandom: 'pickrandom',
