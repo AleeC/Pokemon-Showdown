@@ -46,7 +46,7 @@ var cmds = {
 						'<li>/viewhangman - Muestra el estado actual del juego. Puede ser voceado.</li>' +
 						'<li>/word - Permite a la persona que inició el juego ver la palabra.</li>' +
 						'<li>/category [descripción] OR /topic [descripción] - Permite a la persona que inició el juego cambiar la descripción.</li>' +
-						'<li>/endhangman - Ends the game of hangman in the room. Requires: + % @ & ~</li></ul>' +
+						'<li>/endhangman - Finaliza el juego de hangman. Requiere: + % @ & ~</li></ul>' +
 						'Debido a cambios recientes, hangman puede ser jugado en múltiples chatrooms (exceptuando el lobby por ser muy grande.<br />' +
 						'Diviertete y siéntete libre de mandar un MP si encuentras un bug en el juego - Sweetie');
 	},
