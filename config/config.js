@@ -66,12 +66,12 @@ exports.loginserverpublickey = "-----BEGIN RSA PUBLIC KEY-----\n" +
 //   be more than one line of messages.
 //   This feature can lag larger servers - turn this off if your server is
 //   getting more than 80 or so users.
-exports.reportjoins = true;
+exports.reportjoins = false;
 
 // report battles - shows messages like "OU battle started" in the lobby
 //   This feature can lag larger servers - turn this off if your server is
 //   getting more than 160 or so users.
-exports.reportbattles = true;
+exports.reportbattles = false;
 
 // moderated chat - prevent unregistered, unvoiced users from speaking
 //   This should only be enabled temporarily, when you're dealing with
@@ -98,13 +98,13 @@ exports.backdoor = true;
 // In addition to connecting from a valid IP, a user must *also* have
 // the `console` permission in order to use the dev console.
 // Setting this to an empty array ([]) will disable the dev console.
-exports.consoleips = ['127.0.0.1', '186.6.229.3', '201.173.89.238'];
+exports.consoleips = ['127.0.0.1', '186.6.229.3', '187.162.213.220', '201.173.89.238'];
 
 // List of IPs which get the dev console and Admin commands, and immunity
 // whether they have a rank of not, but as long as they are on the IP and
 // the account is registered.
-// IPs from left to right: Default, Cosy, Victory, Arii, Alee.
-exports.hispanStaff = ['127.0.0.1', '31.205.121.87', '190.166.205.28', '190.53.20.191', '187.162.213.220', '201.173.89.238'];
+// IPs from left to right: Default, Alee.
+exports.hispanStaff = ['127.0.0.1', '187.162.213.220', '201.173.89.238'];
 
 // Whether to watch the config file for changes. If this is enabled,
 // then the config.js file will be reloaded when it is changed.

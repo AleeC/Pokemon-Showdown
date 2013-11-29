@@ -46,8 +46,8 @@ var cmds = {
 						'<li>/viewhangman - Muestra el estado actual del juego. Puede ser voceado.</li>' +
 						'<li>/word - Permite a la persona que inició el juego ver la palabra.</li>' +
 						'<li>/category [descripción] OR /topic [descripción] - Permite a la persona que inició el juego cambiar la descripción.</li>' +
-						'<li>/endhangman - Ends the game of hangman in the room. Requires: + % @ & ~</li></ul>' +
-						'Debido a cambios recientes, hangman puede ser jugado en múltiples chatrooms (exceptuando el lobby por ser muy grande.<br />' +
+						'<li>/endhangman - Finaliza el juego de hangman. Requiere: + % @ & ~</li></ul>' +
+						'Debido a cambios recientes, hangman puede ser jugado en múltiples chatrooms (exceptuando el lobby por ser muy grande).<br />' +
 						'Diviertete y siéntete libre de mandar un MP si encuentras un bug en el juego - Sweetie');
 	},
 	
@@ -105,7 +105,7 @@ var cmds = {
 		if(hangman[room.id].hangman === false) {
 			return this.sendReply('No hay juego de hangman en curso.');
 		}
-		this.sendReplyBox('<font size = 2>' + hangman[room.id].spaces.join(" ") + '<br>Intentos restantes: ' + hangman[room.id].givenguesses + '<br>Categoría: ' + hangman[room.id].hangmantopic[0] + '</font>');
+		this.sendReplyBox('|html|<div class = "broadcast-green"><center><font size = 2>' + hangman[room.id].spaces.join(" ") + '<br>Intentos restantes: ' + hangman[room.id].givenguesses + '<br>Categoría: ' + hangman[room.id].hangmantopic[0] + '</font>');
 	},
 
 	 topic: 'category',
@@ -173,7 +173,7 @@ var cmds = {
 					hangman.reset(room.id);
 					return this.add('|html|<b>' + user.name + '</b> intentó la letra \'' + lettertarget + '\', pero no esta en la palabra. Han fallado en adivinar la palabra por lo que el hombre fue ahorcado.');
 				}
-			this.add('|html|<b>' + user.name + '</b> guessed the letter \'' + lettertarget + '\', but it was not in the word.');
+			this.add('|html|<b>' + user.name + '</b> guessed the letter \'' + lettertarget + '\', pero no estaba en la palabra.');
 		}
 		else {
 			this.add('|html|<b>' + user.name + '</b> adivinó la letra \'' + lettertarget + '\', que era la letra(s) ' + letterright.toString() + ' de la palabra');
