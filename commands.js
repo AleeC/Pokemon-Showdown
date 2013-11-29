@@ -1853,12 +1853,7 @@ var commands = exports.commands = {
         /*********************************************************
 	 * Comandos de presentación
 	 *********************************************************/
-        
-        mrpoke: 'ccmrpokee',
-        ccmrpokee: function(target, room, user) {
-                if (!this.canBroadcast()) return;
-                this.sendReplyBox('<div class="infobox"><center><img src="http://37.0.121.211:8000/avatars/mrpoke.gif"> <br><b><font size=3>Mr.Poke</font></b><br><br>Desarrollador de imágenes y apariencia de Pokémon Hispano</br>');
-        },
+    
 
         arii: 'ariibo',
         ariibo: function(target, room, user) {
