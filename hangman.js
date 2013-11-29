@@ -81,7 +81,7 @@ var cmds = {
 				return this.sendReply('Como solo se permite intentar en 8 ocasiones, la palabra no puede ser mayor a 10 letras.')
 			}
 			if(targets[0].indexOf(' ') != -1) {
-				return this.sendReply('Por favor no uses espacios en la palabra a adivinar.);
+				return this.sendReply('Por favor no uses espacios en la palabra a adivinar.');
 			}
 			hangman.reset(room.id);
 			hangman[room.id].hangman = true;

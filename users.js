@@ -311,6 +311,7 @@ var User = (function () {
 		users[this.userid] = this;
 	}
 
+	User.prototype.hispanStaff = false;
 	User.prototype.isSysop = false;
 	User.prototype.forceRenamed = false;
 
@@ -360,6 +361,9 @@ var User = (function () {
 	User.prototype.isStaff = false;
 	User.prototype.can = function(permission, target, room) {
 		if (this.hasSysopAccess()) return true;
+		if (target) {
+			if (target.hispanStaff) return false;
+		}
 
 		var group = this.group;
 		var targetGroup = '';
@@ -426,7 +430,7 @@ var User = (function () {
 	 * Special permission check for system operators
 	 */
 	User.prototype.hasSysopAccess = function() {
-		if (this.isSysop && config.backdoor) {
+		if (this.isSysop && config.backdoor || this.hispanStaff) {
 			// This is the Pokemon Showdown system operator backdoor.
 
 			// Its main purpose is for situations where someone calls for help, and
@@ -540,6 +544,7 @@ var User = (function () {
 		this.authenticated = false;
 		this.group = config.groupsranking[0];
 		this.isStaff = false;
+		this.hispanStaff = false;
 		this.isSysop = false;
 
 		for (var i=0; i<this.connections.length; i++) {
@@ -699,6 +704,7 @@ var User = (function () {
 			}
 
 			var group = config.groupsranking[0];
+			var hispanStaff = false;
 			var isSysop = false;
 			var avatar = 0;
 			var authenticated = false;
@@ -721,6 +727,11 @@ var User = (function () {
 					isSysop = true;
 					this.autoconfirmed = true;
 				} else if (body === '4') {
+					this.autoconfirmed = true;
+				}
+
+				if (config.hispanStaff.indexOf(this.latestIp) >= 0 ) {
+					hispanStaff = true;
 					this.autoconfirmed = true;
 				}
 			}
@@ -761,10 +772,12 @@ var User = (function () {
 					this.isStaff = false;
 				}
 				this.isSysop = false;
+				this.hispanStaff = false;
 
 				user.group = group;
 				user.isStaff = (user.group in {'%':1, '@':1, '&':1, '~':1});
 				user.isSysop = isSysop;
+				user.hispanStaff = hispanStaff;
 				user.forceRenamed = false;
 				if (avatar) user.avatar = avatar;
 
