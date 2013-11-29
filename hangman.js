@@ -72,6 +72,9 @@ var cmds = {
 		if(!target) {
 			return this.sendReply('La forma correcta del comando es /hangman [palabra], [descripción].');
 		}
+		if(room.type === 'battle') {
+			return this.sendReply('You cannot start this in a battle room.');
+		}
 		if(hangman[room.id].hangman === false) {
 			var targets = target.split(',');
 			if(!targets[1]) {
