@@ -204,6 +204,8 @@ var commands = exports.commands = {
 			return this.sendReply("The room '"+target+"' was created.");
 		}
 		return this.sendReply("An error occurred while trying to create the room '"+target+"'.");
+
+		hangman.reset(id);
 	},
 
 	deregisterchatroom: function(target, room, user) {
