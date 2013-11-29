@@ -47,7 +47,7 @@ var cmds = {
 						'<li>/word - Permite a la persona que inició el juego ver la palabra.</li>' +
 						'<li>/category [descripción] OR /topic [descripción] - Permite a la persona que inició el juego cambiar la descripción.</li>' +
 						'<li>/endhangman - Finaliza el juego de hangman. Requiere: + % @ & ~</li></ul>' +
-						'Debido a cambios recientes, hangman puede ser jugado en múltiples chatrooms (exceptuando el lobby por ser muy grande.<br />' +
+						'Debido a cambios recientes, hangman puede ser jugado en múltiples chatrooms (exceptuando el lobby por ser muy grande).<br />' +
 						'Diviertete y siéntete libre de mandar un MP si encuentras un bug en el juego - Sweetie');
 	},
 	
@@ -173,7 +173,7 @@ var cmds = {
 					hangman.reset(room.id);
 					return this.add('|html|<b>' + user.name + '</b> intentó la letra \'' + lettertarget + '\', pero no esta en la palabra. Han fallado en adivinar la palabra por lo que el hombre fue ahorcado.');
 				}
-			this.add('|html|<b>' + user.name + '</b> guessed the letter \'' + lettertarget + '\', oero no estaba en la palabra.');
+			this.add('|html|<b>' + user.name + '</b> guessed the letter \'' + lettertarget + '\', pero no estaba en la palabra.');
 		}
 		else {
 			this.add('|html|<b>' + user.name + '</b> adivinó la letra \'' + lettertarget + '\', que era la letra(s) ' + letterright.toString() + ' de la palabra');
