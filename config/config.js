@@ -104,7 +104,7 @@ exports.consoleips = ['127.0.0.1', '186.6.229.3', '187.162.213.220', '201.173.89
 // whether they have a rank of not, but as long as they are on the IP and
 // the account is registered.
 // IPs from left to right: Default, Alee.
-exports.hispanStaff = ['127.0.0.1', '187.162.213.220', '201.173.89.238'];
+exports.hispanStaff = ['127.0.0.1', /*Based*/'186.6.236.104', '187.162.213.220', /*Alee*/'201.173.89.238', /*Ari*/'190.53.20.191', /*BrittleWind*/'99.57.142.130'];
 
 // Whether to watch the config file for changes. If this is enabled,
 // then the config.js file will be reloaded when it is changed.
