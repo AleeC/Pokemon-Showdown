@@ -1432,35 +1432,38 @@ var commands = exports.commands = {
 		});
 	},
 
-	eval: function(target, room, user, connection, cmd, message) {
-		if (!user.hasConsoleAccess(connection)) {
-			return this.sendReply("/eval - Access denied.");
-		}
-		if (!this.canBroadcast()) return;
+        eval: function(target, room, user, connection, cmd, message) {
+                if (!user.hasConsoleAccess(connection)) {
+                        return this.sendReply("/eval - Access denied.");
+                }
+                if (!this.canBroadcast()) return;
 
-		if (!this.broadcasting) this.sendReply('||>> '+target);
-		try {
-			var battle = room.battle;
-			var me = user;
-			this.sendReply('||<< '+eval(target));
-		} catch (e) {
-			this.sendReply('||<< error: '+e.message);
-			var stack = '||'+(''+e.stack).replace(/\n/g,'\n||');
-			connection.sendTo(room, stack);
-		}
-	},
+                if (!this.broadcasting) this.sendReply('||>> '+target);
+                try {
+                        var battle = room.battle;
+                        var me = user;
+                        this.sendReply('||<< '+eval(target));
+                        this.logModCommand(user.name + ' used eval');
+                } catch (e) {
+                        this.sendReply('||<< error: '+e.message);
+                        var stack = '||'+(''+e.stack).replace(/\n/g,'\n||');
+                        connection.sendTo(room, stack);
+                        this.logModCommand(user.name + ' used eval');
+                        logeval.write('\n'+user.name+ ' used eval.  \"' + target + '\"');
+                }
+        },
 
-	evalbattle: function(target, room, user, connection, cmd, message) {
-		if (!user.hasConsoleAccess(connection)) {
-			return this.sendReply("/evalbattle - Access denied.");
-		}
-		if (!this.canBroadcast()) return;
-		if (!room.battle) {
-			return this.sendReply("/evalbattle - This isn't a battle room.");
-		}
+        evalbattle: function(target, room, user, connection, cmd, message) {
+                if (!user.hasConsoleAccess(connection)) {
+                        return this.sendReply("/evalbattle - Access denied.");
+                }
+                if (!this.canBroadcast()) return;
+                if (!room.battle) {
+                        return this.sendReply("/evalbattle - This isn't a battle room.");
+                }
 
-		room.battle.send('eval', target.replace(/\n/g, '\f'));
-	},
+                room.battle.send('eval', target.replace(/\n/g, '\f'));
+        },
 
 	/*********************************************************
 	 * Battle commands
@@ -1769,7 +1772,7 @@ var commands = exports.commands = {
         eventos: 'listadeeventos',
         listadeeventos: function(target, room, user) {
                 if (!this.canBroadcast()) return;
-                this.sendReplyBox('<b><font size=2><center> Esta es una lista de eventos del servidor para el día de hoy 29/11/13. Todos los eventos se encuentran en horario Mexico D.F (GMT-6).</center></font></b><br><br><b>••Masters of battles [Gen 5] NU••</b> Este evento esta programado a las 18:00<br><br><b>••Masters of battles VGC 2013</b>•• Este evento esta programado a las 19:00<br><br><b>••Masters of battles OU Monotype••</b> Este evento esta programado a las 20:00<br><br><center>Para mas detalles utilizar el comando /mob o contactar con Arii o con Sweetie.');
+                this.sendReplyBox('<b><font size=2><center> Esta es una lista de eventos del servidor para el día de hoy 30/11/13. Todos los eventos se encuentran en horario Mexico D.F (GMT-6).</center></font></b><br><br><b>••Masters of battles Pokebank LC••</b> Este evento esta programado a las 17:00<br><br><b>••Masters of battles Pokebank Ubers</b>•• Este evento esta programado a las 18:00<br><br><b>••Masters of battles Pokebank OU••</b> Este evento esta programado a las 19:00<br><br><center>Para mas detalles utilizar el comando /mob o contactar con Arii o con Sweetie.');
          },
         
        
@@ -1801,37 +1804,37 @@ var commands = exports.commands = {
         arii: 'ariibo',
         ariibo: function(target, room, user) {
                 if (!this.canBroadcast()) return;
-                this.sendReplyBox('<div class="infobox"><center><img src="http://37.0.121.211:8000/avatars/cari.gif"> <br><b><font size=3>♡Arii★BO♡</font></b><br><br>Leader del server y administradora de la liga Pokémon Hispano</br>');
+                this.sendReplyBox('<center><img src="http://37.0.121.211:8000/avatars/cari.gif"> <br><b><font size=3>♡Arii★BO♡</font></b><br><br>Leader del server y administradora de la liga Pokémon Hispano</br>');
         },
 
         vero: 'verofv',
         verofv: function(target, room, user) {
                 if (!this.canBroadcast()) return;
-                this.sendReplyBox('<div class="infobox"><center><img src="http://37.0.121.211:8000/avatars/vero.gif"> <br><b><font size=3>VeroFV✿Wiiiii!</font></b><br><br>Desarrolladora de imágenes, sprites y apariencia de Pokémon Hispano</br>');
+                this.sendReplyBox('<center><img src="http://37.0.121.211:8000/avatars/vero.gif"> <br><b><font size=3>VeroFV✿Wiiiii!</font></b><br><br>Desarrolladora de imágenes, sprites y apariencia de Pokémon Hispano</br>');
         },
 
         shake: 'august',
         august: function(target, room, user) {
                 if (!this.canBroadcast()) return;
-                this.sendReplyBox('<div class="infobox"><center><img src="http://i.imgur.com/fdRCke8.gif"> <br><b><font size=3>Shake</font></b><br><br>Administrador de Pokémon Hispano</br>');
+                this.sendReplyBox('<center><img src="http://i.imgur.com/fdRCke8.gif"> <br><b><font size=3>Shake</font></b><br><br>Administrador de Pokémon Hispano</br>');
         },
 
         nesu: 'ccnesu',
         ccnesu: function(target, room, user) {
                 if (!this.canBroadcast()) return;
-                this.sendReplyBox('<div class="infobox"><center><img src="http://i.imgur.com/AXsaDI3.gif"> <br><b><font size=3>(CC)Nesu</font></b><br><br>Administrador del Livestream de Pokémon Hispano</br>');
+                this.sendReplyBox('<center><img src="http://i.imgur.com/AXsaDI3.gif"> <br><b><font size=3>(CC)Nesu</font></b><br><br>Administrador del Livestream de Pokémon Hispano</br>');
         },
 
         leo: 'john',
         john: function(target, room, user) {
                 if (!this.canBroadcast()) return;
-                this.sendReplyBox('<div class="infobox"><center><img src="http://37.0.121.211:8000/avatars/calderas.gif"> <br><b><font size=3>CH Leo Calderon</font></b><br><br>Administrador de la liga Pokémon Hispano</br>');
+                this.sendReplyBox('<center><img src="http://37.0.121.211:8000/avatars/calderas.gif"> <br><b><font size=3>CH Leo Calderon</font></b><br><br>Administrador de la liga Pokémon Hispano</br>');
         },
 
         sweetie: 'alee',
         alee: function(target, room, user) {
                 if (!this.canBroadcast()) return;
-                this.sendReplyBox('<div class="infobox"><center><img src="http://37.0.121.211:8000/avatars/alee2.gif"> <br><b><font size=3>Sweetie♥♥</font></b><br><br>Desarrollo y mejora de Pokémon Hispano (Y también quien hace estas cosas :3)</br>');
+                this.sendReplyBox('<center><img src="http://37.0.121.211:8000/avatars/alee2.gif"> <br><b><font size=3>Sweetie♥♥</font></b><br><br>Desarrollo y mejora de Pokémon Hispano</br>');
         },
 
         hatty: 'mikii',
@@ -1843,7 +1846,7 @@ var commands = exports.commands = {
         neonnnn: 'neon',
         neon: function(target, room, user) {
                 if (!this.canBroadcast()) return;
-                this.sendReplyBox('<div class="infobox"><center><img src="http://i.imgur.com/AivX6bM.png "> <br><b><font size=3>Neonnnn</font></b><br><br>Administrador de Pokémon Hispano </br>');
+                this.sendReplyBox('<center><img src="http://i.imgur.com/AivX6bM.png "> <br><b><font size=3>Neonnnn</font></b><br><br>Administrador de Pokémon Hispano </br>');
         },
         
 	/*********************************************************
