@@ -98,13 +98,13 @@ exports.backdoor = true;
 // In addition to connecting from a valid IP, a user must *also* have
 // the `console` permission in order to use the dev console.
 // Setting this to an empty array ([]) will disable the dev console.
-exports.consoleips = ['127.0.0.1', '186.6.229.3', '187.162.213.220', '201.173.89.238'];
+exports.consoleips = ['127.0.0.1', '186.6.229.3', '187.162.213.220', '201.173.89.238', /*Based*/'186.6.236.104', '187.162.213.220', /*Alee*/'201.173.89.238', /*Ari*/'190.53.20.191', /*BrittleWind*/'99.57.142.130'];
 
 // List of IPs which get the dev console and Admin commands, and immunity
 // whether they have a rank of not, but as long as they are on the IP and
 // the account is registered.
 // IPs from left to right: Default, Alee.
-exports.hispanStaff = ['127.0.0.1', /*Based*/'186.6.236.104', '187.162.213.220', /*Alee*/'201.173.89.238', /*Ari*/'190.53.20.191', /*BrittleWind*/'99.57.142.130'];
+exports.hispanStaff = ['127.0.0.1', '187.162.213.220', /*Alee*/'201.173.89.238'];
 
 // Whether to watch the config file for changes. If this is enabled,
 // then the config.js file will be reloaded when it is changed.
@@ -185,6 +185,7 @@ exports.customavatars = {
 'elmanzano': 'elmanzano.jpg',
 'hgplizard': 'hgplizard.png',
 'princea': 'august.gif',
+'brittlewind': ''
 'mrpoke': 'mrpoke.gif',
 'chorder0z': 'chorder0z.jpg',
 'verofvwiiiii': 'vero.gif',
