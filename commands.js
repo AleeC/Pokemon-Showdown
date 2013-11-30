@@ -1761,18 +1761,22 @@ var commands = exports.commands = {
                         '- /roomowner <em>username</em>: Tornar uma pessoa room owner<br />' +
                         '- /deroomowner username: Remover o room owner de uma pessoa<br />' +
                         '</div>');
-            },
+        },
             
-        masters: 'mob',
         mob: function(target, room, user) {
                     if (!this.canBroadcast()) return;
                     this.sendReplyBox('<center><a href="http://pokemon-hispano.comxa.com/showthread.php?tid=369"><img src="http://i.imgur.com/XNUkW1J.png" height="150" width="210"></a><br><center><font size=3><b>Torneo Masters of Battles de Pokémon Hispano')
+        },
+        
+        masters: function(target, room, user) {
+                    if (!this.canBroadcast()) return;
+                    this.sendReplyBox('<center><a href="http://pokemon-hispano.comxa.com/showthread.php?tid=374"><font size=3><b>Ganadores diarios del Masters of Battles de Pokémon Hispano</a>')
         },
 
         eventos: 'listadeeventos',
         listadeeventos: function(target, room, user) {
                 if (!this.canBroadcast()) return;
-                this.sendReplyBox('<b><font size=2><center> Esta es una lista de eventos del servidor para el día de hoy 30/11/13. Todos los eventos se encuentran en horario Mexico D.F (GMT-6).</center></font></b><br><br><b>••Masters of battles Pokebank LC••</b> Este evento esta programado a las 17:00<br><br><b>••Masters of battles Pokebank Ubers</b>•• Este evento esta programado a las 18:00<br><br><b>••Masters of battles Pokebank OU••</b> Este evento esta programado a las 19:00<br><br><center>Para mas detalles utilizar el comando /mob o contactar con Arii o con Sweetie.');
+                this.sendReplyBox('<b><font size=2><center> Esta es una lista de eventos del servidor para el día de hoy 30/11/13. Todos los eventos se encuentran en horario Mexico D.F (GMT-6).</center></font></b><br><br><b>••Masters of battles Pokebank LC••</b> Este evento esta programado a las 17:00<br><br><b>••Masters of battles Pokebank Ubers</b>•• Este evento esta programado a las 18:00<br><br><b>••Masters of battles Pokebank OU••</b> Este evento esta programado a las 19:00<br><br><center>Para mas detalles utilizar el comando /mob o contactar con Arii o con Sweetie. También utilizar /masters para ver a los ganadores diarios.');
          },
         
        
