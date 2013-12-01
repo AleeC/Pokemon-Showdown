@@ -146,7 +146,6 @@ exports.customavatars = {
 'linkllos': 'link.png',
 'hotoshimi': 'bidoof.png',
 'thejoga': 'joga.png',
-'mrpoke': 'pika.png',
 'zkfruitninja': 'daniela1.png',
 'falleen': 'fallen.png',
 'darkrix': 'dark.png',
