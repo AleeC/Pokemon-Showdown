@@ -184,7 +184,7 @@ exports.customavatars = {
 'elmanzano': 'elmanzano.jpg',
 'hgplizard': 'hgplizard.png',
 'princea': 'august.gif',
-'brittlewind': ''
+'brittlewind': '',
 'mrpoke': 'mrpoke.gif',
 'chorder0z': 'chorder0z.jpg',
 'verofvwiiiii': 'vero.gif',
