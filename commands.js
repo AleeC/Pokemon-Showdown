@@ -1815,7 +1815,7 @@ var commands = exports.commands = {
         eventos: 'listadeeventos',
         listadeeventos: function(target, room, user) {
                 if (!this.canBroadcast()) return;
-                this.sendReplyBox('<b><font size=2><center> Esta es una lista de eventos del servidor para el día de hoy 01/12/13. Todos los eventos se encuentran en horario Mexico D.F (GMT-6).</center></font></b><br><br><b>••Masters of battles Gen 5 LC••</b> Este evento esta programado a las 17:00<br><br><b>••Masters of battles Pokebank Ubers</b>•• Este evento esta programado a las 18:00<br><br><b>••Masters of battles Pokebank OU••</b> Este evento esta programado a las 19:00<br><br><center>Para mas detalles utilizar el comando /mob o contactar con Arii o con Sweetie. También utilizar /masters para ver a los ganadores diarios.');
+                this.sendReplyBox('<b><font size=2><center> Esta es una lista de eventos del servidor para el día de hoy 03/12/13. Todos los eventos se encuentran en horario Mexico D.F (GMT-6).</center></font></b><br><br><b>••Masters of battles Gen 5 LC••</b> Este evento esta programado a las 17:00<br><br><b>••Masters of battles Pokebank Ubers</b>•• Este evento esta programado a las 18:00<br><br><b>••Masters of battles Pokebank OU••</b> Este evento esta programado a las 19:00<br><br><center>Para mas detalles utilizar el comando /mob o contactar con Arii o con Sweetie. También utilizar /masters para ver a los ganadores diarios.');
          },
         
        
